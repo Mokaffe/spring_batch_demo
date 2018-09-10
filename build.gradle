@@ -25,9 +25,20 @@ repositories {
 
 
 dependencies {
+	compile('org.springframework.boot:spring-boot-starter')
+	compile('org.springframework.boot:spring-boot-starter-web')
 	compile('org.springframework.boot:spring-boot-starter-batch')
+	compile('org.springframework.boot:spring-boot-starter-jdbc')
 	compile('org.springframework.boot:spring-boot-starter-data-jpa')
-	runtime('mysql:mysql-connector-java')
+	compile group: 'com.fasterxml.jackson.datatype', name: 'jackson-datatype-joda', version: '2.9.4'
+	compile group: 'org.jadira.usertype', name: 'usertype.core', version: '6.0.1.GA'
+	compile group: 'mysql', name: 'mysql-connector-java', version: '6.0.6'
+//	runtime('mysql:mysql-connector-java')
 	testCompile('org.springframework.boot:spring-boot-starter-test')
 	testCompile('org.springframework.batch:spring-batch-test')
 }
+
+// 找到冲突类库，排除掉.spring-boot-starter-web 默认log日志为logback
+//configurations {
+//	compile.exclude module: 'spring-boot-starter-logback'
+//}
